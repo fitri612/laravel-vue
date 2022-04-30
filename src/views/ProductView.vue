@@ -102,7 +102,7 @@ export default {
     },
     data(){
         return{
-            gambar_default: "img/ck-1.jpg",
+            gambar_default: "",
             thumbs : [
                     "img/ck-1.jpg",
                     "img/ck-2.jpg",
@@ -118,6 +118,13 @@ export default {
             // eslint-disable-next-line no-console
             console.log(this.id);
 
+        },
+        setDataPictures(data){
+            // replace object productDetails with data dari API
+            this.productDetails = data;
+            // replace value gambar_default dengan data dari API {galleris}
+            this.gambar_default = data.galleries[0].photo;
+
         }
     },
     mounted() {
@@ -127,7 +134,7 @@ export default {
                 id: this.$route.params.id
             }
         })
-        .then(res => (this.productDetails = res.data.data))
+        .then(res => this.setDataPictures(res.data.data))
         // eslint-disable-next-line no-console
         .catch(err => console.log(err));
   },
