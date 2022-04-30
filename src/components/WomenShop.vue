@@ -8,13 +8,13 @@
 
                         <div class="product-item" v-for="itemProduct in products" v-bind:key="itemProduct.id">
                             <div class="pi-pic">
-                                <img src="img/ck-4.jpg" alt="" />
+                                <img v-bind:src="itemProduct.galleries[0].photo" alt="" />
                                 <ul>
                                     <li class="w-icon active">
                                         <a href="#"><i class="icon_bag_alt"></i></a>
                                     </li>
                                     <li class="quick-view">
-                                        <router-link to="/product">
+                                        <router-link v-bind:to="'/product/'+itemProduct.id">
                                         + Quick View
                                         </router-link>
                                     </li>
