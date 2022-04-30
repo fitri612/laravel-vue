@@ -30,23 +30,17 @@
                             <div class="product-pic-zoom">
                                 <img class="product-big-img" :src="gambar_default" alt="" />
                             </div>
-                            <div class="product-thumbs">
+                            <div class="product-thumbs" v-if="productDetails.galleries.length > 0">
                                 <carousel :dots="false" :nav="false" class="product-thumbs-track ps-slider">                                    
 
-                                    <div class="pt active" @click="changeImage(thumbs[0])" >
-                                        <img src="img/ck-1.jpg" alt="" />
-                                    </div>
-
-                                    <div class="pt" @click="changeImage(thumbs[1])" >
-                                        <img src="img/ck-2.jpg" alt="" />
-                                    </div>
-
-                                    <div class="pt" @click="changeImage(thumbs[2])">
-                                        <img src="img/ck-3.jpg" alt="" />
-                                    </div>
-
-                                    <div class="pt" @click="changeImage(thumbs[3])">
-                                        <img src="img/ck-4.jpg" alt="" />
+                                    <div 
+                                        v-for="ss in productDetails.galleries"
+                                        :key="ss.id"
+                                        class="pt"
+                                        @click="changeImage(ss.photo)"
+                                        :class="ss.photo == gambar_default ? 'active' : '' "
+                                        >
+                                        <img :src="ss.photo" alt="" />
                                     </div>
                                 </carousel>
                             </div>
