@@ -61,7 +61,7 @@
                                     </div>
                                     <div class="select-total">
                                         <span>total:</span>
-                                        <h5>$120.00</h5>
+                                        <h5>${{ totalPrice }}.00</h5>
                                     </div>
                                     <div class="select-button">
                                         <a href="#" class="primary-btn view-card">
@@ -107,7 +107,17 @@ export default {
                 localStorage.removeItem('keranjangUser');
             }
         }
+    },
+    computed: {
+        totalPrice(){
+            let total = 0;
+            for (let i = 0; i < this.keranjangUser.length; i++) {
+                total += this.keranjangUser[i].price;
+            }
+            return total;
+        }
     }
+    
 }
 </script>
 
